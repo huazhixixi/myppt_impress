@@ -1,0 +1,300 @@
+/*
+  A common approach is to use googleapis.com to generate css for the webfonts you want to use.
+  The downside of this approach is that you have to be online. So below I have simply saved
+  the output of the googleapis url into a file. Then you of course also have to make sure
+  the webfonts are locally installed to make offline usage work. For Ubuntu (or Debian) I
+  successfully used the script from here to do that:
+  http://www.webupd8.org/2011/01/automatically-install-all-google-web.html
+*/
+
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Cutive+Mono); */
+@import url(fonts.css);
+
+
+
+/*
+    We display a fallback message for users with browsers that don't support
+    all the features required by it. All of the content will be still fully
+    accessible for them, but some more advanced effects would be missing.
+    When impress.js detects that browser supports all necessary CSS3 features,
+    the fallback-message style is hidden.
+*/
+.card-img{
+    margin-top: 14%;
+    /*height: 700px;*/
+}
+
+#shouye .display-1{
+    font-weight: bold;
+    font-family: "Times New Roman";
+    margin-top: 25%;
+}
+#shouye .h1{
+    font-family: "Times New Roman";
+    font-weight: bold;
+}
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+.fallback-message p {
+    margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+
+/*
+  The body background is the bacgkround of "everything". Many
+  impress.js tools call it the "surface". It could also be a
+  picture or pattern, but we leave it as light gray.
+*/
+
+body {
+    font-family: 'Times New Roman', sans-serif;
+    min-height: 740px;
+
+    background: rgb(215, 215, 215);
+    color: rgb(70, 70, 70);
+}
+
+/*
+    Now let's style the presentation steps.
+*/
+
+.step {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    padding: 0;
+    margin: 0 0;
+
+    box-sizing:         border-box;
+
+    font-family: 'PT Serif', georgia, serif;
+    font-size: 60px;
+    line-height: 1.5;
+}
+/*
+    Make inactive steps a little bit transparent.
+*/
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.3;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1 }
+
+
+.slide {
+    display: block;
+
+    width: 1920px;
+    height: 1080px;
+
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 30px;
+
+    /*letter-spacing: -2px;*/
+}
+
+
+
+.slide h1,
+.slide h2,
+.slide h3 {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+
+/* Highlight.js used for coloring pre > code blocks. */
+.slide pre > code {
+    font-size: 30px;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+/* Inline code, no Highlight.js */
+code {
+    font-family: "Cutive mono","Courier New", monospace;
+}
+
+
+.section_title{
+    font-family: 'PT Serif';
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 1;
+}
+
+/* 
+.slide .right {
+    float: right;
+    margin-left:  60px;
+    margin-right:   0px;
+    margin-top:    40px;
+    margin-bottom: 40px;
+}
+.slide .left {
+    float: left;
+    margin-right: 60px;
+    margin-left:    0px;
+    margin-top:    40px;
+    margin-bottom: 40px;
+}
+.slide .top {
+    position: absolute;
+    top: 40px;
+    margin-bottom:  40px;
+    margin-top:      0px;
+}
+.slide .bottom {
+    position: absolute;
+    bottom: 40px;
+    margin-bottom:   0px;
+    margin-top:     40px;
+} */
+
+/*
+    Specific styles for: .title slides
+*/
+
+
+
+/* Styles for animating the contents of a slide, such as a img, p, li or span element. ********/
+
+/*
+ fly-in class starts from a position outside the slide, then flies into it's correct position.
+*/
+.future .fly-in {
+    transform: translateY(-2100px);
+    opacity: 0.0; /* Make it invisible, just so it doesn't clutter some other slide that might be in the position where we moved it */
+}
+.present .fly-in {
+    transform:         translateY(0px);
+    opacity: 1.0;
+    transition:         2s;
+}
+.past .fly-out {
+    transform:         translateY(2100px);
+    opacity: 0.0;
+    transition:         2s;
+}
+
+/*
+   Fade-in/out is a straightforward fade. Give it enough seconds that all browsers render it clearly.
+*/
+.future .fade-in {
+    opacity: 0.0;
+}
+.present .fade-in {
+    opacity: 1.0;
+    transition: 3s;
+}
+.past .fade-out {
+    opacity: 0.0;
+    transition: 3s;
+}
+/*
+    Zoom-in.
+*/
+.future  .zoom-in {
+    transform:        scale(10);
+    opacity: 0.0;
+}
+.present .zoom-in {
+    transform:         scale(1);
+    opacity: 1.0;
+    transition: 3s;
+}
+.past  .zoom-out {
+    transform:        scale(10);
+    opacity: 0.0;
+}
+
+/*
+    Styles for specific slides.
+*/
+
+/* The bar graph for Acme Inc profits */
+
+#acme-graph-bottom {
+    position: absolute;
+    bottom: 100px;
+    right: 200px;
+    background-color: black;
+    width: 900px;
+    height: 3px;
+}
+
+/* height: is set from javascript */
+#acme-graph-q1,
+#acme-graph-q2,
+#acme-graph-q3,
+#acme-graph-q4 {
+    border: solid 1px black;
+    width: 140px;
+    margin-left: 30px;
+    position: absolute;
+    bottom: 100px;
+}
+
+#acme-graph-q1 {
+    background-color: red;
+    right: 900px;
+}
+
+#acme-graph-q2 {
+    background-color: blue;
+    right: 700px;
+}
+
+#acme-graph-q3 {
+    background-color: green;
+    right: 500px;
+}
+
+#acme-graph-q4 {
+    background-color: purple;
+    left: 750px;
+    right: 300px;
+}
+
+/*
+    And as the last thing there is a workaround for quite strange bug.
+    It happens a lot in Chrome. I don't remember if I've seen it in Firefox.
+
+    Sometimes the element positioned in 3D (especially when it's moved back
+    along Z axis) is not clickable, because it falls 'behind' the <body>
+    element.
+
+    To prevent this, I decided to make <body> non clickable by setting
+    pointer-events property to `none` value.
+    Value if this property is inherited, so to make everything else clickable
+    I bring it back on the #impress element.
+
+    If you want to know more about `pointer-events` here are some docs:
+    https://developer.mozilla.org/en/CSS/pointer-events
+
+    There is one very important thing to notice about this workaround - it makes
+    everything 'unclickable' except what's in #impress element.
+
+    So use it wisely ... or don't use at all.
+*/
+.impress-enabled                          { pointer-events: none }
+.impress-enabled #impress                 { pointer-events: auto }
+.impress-enabled #impress-toolbar         { pointer-events: auto }
+.impress-enabled #impress-console-button  { pointer-events: auto }
